@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "company": "Ikea",
+        "image": "./img/bonita.jpg",
+        "price": 10,
+        "name": "Bonita Beanbag Chair"
+    },
+    {
+        "id": 2,
+        "company": "Marcos",
+        "image": "./img/avante.webp",
+        "price": 80,
+        "name": "Avante Table"
+    },
+    {
+        "id": 3,
+        "company": "Caressa",
+        "image": "./img/capri.webp",
+        "price": 19,
+        "name": "Capri Sofa"
+    },
+    {
+        "id": 4,
+        "company": "Liddy",
+        "image": "./img/isabella.webp",
+        "price": 13,
+        "name": "Isabella Night Table"
+    },
+    {
+        "id": 5,
+        "company": "Ikea",
+        "image": "./img/kristian.webp",
+        "price": 45,
+        "name": "Kristian Night Table"
+    },
+    {
+        "id": 6,
+        "company": "Marcos",
+        "image": "./img/pierre.webp",
+        "price": 90,
+        "name": "Pierre Chair"
+    },
+    {
+        "id": 7,
+        "company": "Caressa",
+        "image": "./img/selva.webp",
+        "price": 60,
+        "name": "Selva Bed"
+    },
+    {
+        "id": 8,
+        "company": "Liddy",
+        "image": "./img/vicont.webp",
+        "price": 40,
+        "name": "Vicont Chair"
+    },
+    {
+        "id": 9,
+        "company": "Caressa",
+        "image": "./img/vittria.webp",
+        "price": 50,
+        "name": "Vittria Table"
+    }
+]

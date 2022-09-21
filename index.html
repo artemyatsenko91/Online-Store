@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online store</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header">
+                <nav class="header-menu">
+                    <ul class="nav-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a class="products-link" href="./products.html">Products</a></li>
+                        <li><a href="./about.html">About</a></liname=>
+                    </ul>
+                </nav>
+                <span class="logo">Comfy</span>
+                <div class="cart-wrapper-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="amount hide"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <aside class="cart-panel">
+            <div class="blackput hide"></div>
+            <div class="cart-block">
+                <i class="fa-solid fa-xmark"></i>
+                <div class="cart-content">
+                    <h2 class="cart-title">Your bag</h2>
+                    <div class="cart-products-wrap">
+                        <!-- Dynamic data -->
+                    </div>
+                    <div class="total-block">
+                        <h2 class="cart-title">Total: <span class="total-cost"></span></h2>
+                        <button class="btn btn-checkout">checkout</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <section class="main-bg">
+            <div class="container">
+                <div class="main-screen-content">
+                    <h1 class="title">Rest, Relax, Unwind</h1>
+                    <span class="sub-title">Embrace your choises - we do</span>
+                    <a href="./products.html" class="show-all show-all-btn">show all</a>
+                </div>
+            </div>
+        </section>
+        <section class="home-content">
+            <div class="container">
+                <div class="content-wrap">
+                    <div class="featured">
+                        <h2 class="content-title">Featured</h2>
+                        <div class="card-wrapper">
+                            <!-- Dynamic data -->
+                        </div>
+                        <a  href="./products.html"  class="btn btn-all-products show-all-btn">all products</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://kit.fontawesome.com/5bcf608b64.js" crossorigin="anonymous"></script>
+    <script type="module" src="./js/script.js"></script>
+</body>
+
+</html>
