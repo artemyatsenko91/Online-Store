@@ -1,7 +1,13 @@
-import { MenuCard, callCartFunctions, addToCart, checkAddedProductsToCart, checkCartProducts } from "./home.js";
-import { data } from "./script.js";
+import {
+    MenuCard,
+    callCartFunctions,
+    addToCart,
+    checkAddedProductsToCart,
+    checkCartProducts,
+} from './home.js';
+import { data } from './script.js';
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
     const body = document.body;
     const products = body.querySelector('.products');
     const listWrapper = body.querySelector('.company-list');
@@ -12,7 +18,7 @@ window.addEventListener("load", () => {
 
     function generateCardProduct(arr) {
         removeProductCard();
-        arr.forEach(item => {
+        arr.forEach((item) => {
             new MenuCard(item, '.products .card-wrapper').render();
         });
         checkAddedProductsToCart();
@@ -21,55 +27,67 @@ window.addEventListener("load", () => {
     function removeProductCard() {
         const productsCard = products.querySelectorAll('.product-card');
 
-        productsCard && productsCard.forEach(item => {
-            item.remove();
-        });
+        productsCard &&
+            productsCard.forEach((item) => {
+                item.remove();
+            });
     }
 
-    listWrapper && listWrapper.addEventListener('click', (e) => {
-        const listLinks = products.querySelectorAll('.company-link');
+    listWrapper &&
+        listWrapper.addEventListener('click', (e) => {
+            const listLinks = products.querySelectorAll('.company-link');
 
-        if (e.target.classList.contains('company-link')) {
-            searchInput.value = '';
-            if (e.target.innerHTML === 'All') {
-                removeProductCard();
+            if (e.target.classList.contains('company-link')) {
+                searchInput.value = '';
+                if (e.target.innerHTML === 'All') {
+                    removeProductCard();
 
-                data.forEach(item => {
-                    if (item.price <= inputRange.value) {
-                        new MenuCard(item, '.products .card-wrapper').render();
-                    }
-                });
+                    data.forEach((item) => {
+                        if (item.price <= inputRange.value) {
+                            new MenuCard(
+                                item,
+                                '.products .card-wrapper'
+                            ).render();
+                            addToCart();
+                            checkAddedProductsToCart();
+                        }
+                    });
+                } else {
+                    removeProductCard();
 
-                addToCart();
-                checkAddedProductsToCart();
-            } else {
-                removeProductCard();
-                addToCart();
-
-                data.forEach(item => {
-                    if (item.company.toLowerCase().includes(e.target.innerHTML.toLowerCase()) && item.price <= inputRange.value) {
-                        new MenuCard(item, '.products .card-wrapper').render();
-                    }
-                });
-                checkAddedProductsToCart();
-            }
-
-            listLinks.forEach(item => {
-                item.classList.remove('active');
-
-                if (e.target === item) {
-                    e.target.classList.add('active');
+                    data.forEach((item) => {
+                        if (
+                            item.company
+                                .toLowerCase()
+                                .includes(e.target.innerHTML.toLowerCase()) &&
+                            item.price <= inputRange.value
+                        ) {
+                            new MenuCard(
+                                item,
+                                '.products .card-wrapper'
+                            ).render();
+                            addToCart();
+                            checkAddedProductsToCart();
+                        }
+                    });
                 }
-            });
-        }
-    });
+
+                listLinks.forEach((item) => {
+                    item.classList.remove('active');
+
+                    if (e.target === item) {
+                        e.target.classList.add('active');
+                    }
+                });
+            }
+        });
 
     function generateListOfCompany() {
-        data.forEach(item => {
+        data.forEach((item) => {
             companyArr.add(item.company);
         });
 
-        companyArr.forEach(item => {
+        companyArr.forEach((item) => {
             const out = `
                 <li class="company-link">${item}</li>
             `;
@@ -82,7 +100,7 @@ window.addEventListener("load", () => {
         let maxPriceValue = 0;
         let minPriceValue = 0;
 
-        data.forEach(item => {
+        data.forEach((item) => {
             if (maxPriceValue < item.price) {
                 maxPriceValue = item.price;
                 if (!minPriceValue) {
@@ -110,7 +128,7 @@ window.addEventListener("load", () => {
         removeProductCard();
         const checkLink = findActiveCompany();
 
-        data.forEach(item => {
+        data.forEach((item) => {
             if (checkLink === 'All') {
                 if (item.price <= inputRange.value) {
                     new MenuCard(item, '.products .card-wrapper').render();
@@ -118,7 +136,12 @@ window.addEventListener("load", () => {
                     checkAddedProductsToCart();
                 }
             } else {
-                if (item.company.toLowerCase().includes(findActiveCompany().toLowerCase()) && item.price <= inputRange.value) {
+                if (
+                    item.company
+                        .toLowerCase()
+                        .includes(findActiveCompany().toLowerCase()) &&
+                    item.price <= inputRange.value
+                ) {
                     new MenuCard(item, '.products .card-wrapper').render();
                     addToCart();
                     checkAddedProductsToCart();
@@ -127,7 +150,7 @@ window.addEventListener("load", () => {
         });
     }
 
-    function generateCardByWords (data, arr, word) {
+    function generateCardByWords(data, arr, word) {
         if (arr.length <= 1) {
             if (data.name.toLowerCase().includes(word[0].toLowerCase())) {
                 new MenuCard(data, '.products .card-wrapper').render();
@@ -135,11 +158,14 @@ window.addEventListener("load", () => {
                 checkAddedProductsToCart();
             }
         } else {
-            if (data.name.toLowerCase().includes(word[0].toLowerCase()) && data.name.toLowerCase().includes(word[1].toLowerCase())) {
+            if (
+                data.name.toLowerCase().includes(word[0].toLowerCase()) &&
+                data.name.toLowerCase().includes(word[1].toLowerCase())
+            ) {
                 new MenuCard(data, '.products .card-wrapper').render();
                 addToCart();
                 checkAddedProductsToCart();
-            } 
+            }
         }
     }
 
@@ -150,12 +176,19 @@ window.addEventListener("load", () => {
 
             removeProductCard();
 
-            data.forEach(item => {
+            data.forEach((item) => {
                 if (findActiveCompany() === 'All') {
-                    generateCardByWords (item, secondtArr, secondtArr);
-                }  else {
-                    if (item.name.toLowerCase().includes(secondtArr[0].toLowerCase()) && item.company.toLowerCase().includes(findActiveCompany().toLowerCase())) {
-                        generateCardByWords (item, secondtArr, secondtArr);
+                    generateCardByWords(item, secondtArr, secondtArr);
+                } else {
+                    if (
+                        item.name
+                            .toLowerCase()
+                            .includes(secondtArr[0].toLowerCase()) &&
+                        item.company
+                            .toLowerCase()
+                            .includes(findActiveCompany().toLowerCase())
+                    ) {
+                        generateCardByWords(item, secondtArr, secondtArr);
                     }
                 }
                 checkAddedProductsToCart();
@@ -169,9 +202,16 @@ window.addEventListener("load", () => {
                 } else {
                     removeProductCard();
 
-                    data.forEach(item => {
-                        if (item.company.toLowerCase().includes(findActiveCompany().toLowerCase())) {
-                            new MenuCard(item, '.products .card-wrapper').render();
+                    data.forEach((item) => {
+                        if (
+                            item.company
+                                .toLowerCase()
+                                .includes(findActiveCompany().toLowerCase())
+                        ) {
+                            new MenuCard(
+                                item,
+                                '.products .card-wrapper'
+                            ).render();
                         }
                     });
                     addToCart();
@@ -186,7 +226,7 @@ window.addEventListener("load", () => {
         const listLinks = products.querySelectorAll('.company-link');
         let companyName;
 
-        listLinks.forEach(item => {
+        listLinks.forEach((item) => {
             if (item.classList.contains('active')) {
                 companyName = item.innerHTML;
             }
